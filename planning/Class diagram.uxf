@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>30</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Class
+--
+variable(int)
+variable(str)
+--
+a_method()
+--
+Responsibilities
+-- Resp1
+*-- Resp2*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>30</y>
+      <w>350</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>Eatery
+--
+ID(int)
+Name (str)
+--
+save()
+retrieve_all()
+delete_all()
+--
+Responsibilities
+-Creates new eateries
+-Saves eateries into eateries table
+-Retrieves eateries by id
+-Retrieves all eateries</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>30</x>
+      <y>260</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Burger
+--
+id(int)
+eatery_id(int)
+name(str)
+price(int)
+--
+a_method()
+--
+Responsibilities
+-- Resp1
+*-- Resp2*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>260</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Deal
+--
+variable(int)
+variable(str)
+id(int)
+eatery_id(int)
+burger_ids(array)
+--
+new_deal()
+deal_type()
+
+--
+Responsibilities
+-- Resp1
+*-- Resp2*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>530</x>
+      <y>260</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Day
+--
+Day(str)
+Day_id(int)
+--
+Responsibilities
+-Provides set days list </panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
