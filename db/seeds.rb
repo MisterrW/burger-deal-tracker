@@ -17,6 +17,17 @@ def days
 
 end
 
+def deal_types
+  sql = "
+  INSERT INTO deal_types
+  (name)
+  VALUES
+  ('half price'),
+  ('burger and a pint')
+  ;"
+  SqlRunner.run(sql)
+end
+
 def eateries
   sql = "
   INSERT INTO eateries
@@ -31,36 +42,37 @@ def eateries
 end
 
 def eatery_id(eatery_name)
-  sql = "SELECT FROM eateries WHERE name = '#{eatery_name}';"
+  sql = "SELECT * FROM eateries WHERE name = '#{eatery_name}';"
   eatery = SqlRunner.run(sql)
-  binding.pry
   return eatery[0]['id'].to_i
 end
 
-
-
-def burgers 
+def burgers
+  bobby_id = eatery_id('Bobbys Burger Shack')
+  hank_id = eatery_id('Hanks Beef Sandwich Emporium')
   sql= "
   INSERT INTO burgers
   (name, eatery_id, price)
   VALUES
   ('Bobbys Basic Beef', #{bobby_id}, 10),
-  (Bobbys Big Beef, #{bobby_id}, 10),
+  ('Bobbys Big Beef', #{bobby_id}, 15),
   ('Hanks Vegan Surprise', #{hank_id}, 10),
-  ('Hanks Heap of Hog, #{hank_id}, 10),
+  ('Hanks Heap of Hog', #{hank_id}, 15)
   ;"
 
   SqlRunner.run(sql)
 
 end
 
-def deals 
+def deals
+  bobby_id = eatery_id('Bobbys Burger Shack')
+  hank_id = eatery_id('Hanks Beef Sandwich Emporium') 
   sql= "
   INSERT INTO deals
-  (deal, eatery_id, day_id, deal_type)
+  (name, eatery_id, day_id, deal_type)
   VALUES
   ('Bobbys Budget Bonanza', #{bobby_id}, 3, 1),
-  ('Hanks Half-Price Happiness', #{hank_id}, 10, 2),
+  ('Hanks Half-Price Happiness', #{hank_id}, 5, 2)
   ;"
 
   SqlRunner.run(sql)
@@ -69,13 +81,7 @@ end
 
 days()
 eateries()
-
-bobby_id = eatery_id('Bobbys Burger Shack')
-bobby_id = eatery_id('Hanks Beef Sandwich Emporium')
-
-
-
-
-
+burgers()
+deals()
 
 
