@@ -15,7 +15,6 @@ def days
   (7, 'Sunday')
   ;"
   SqlRunner.run(sql)
-
 end
 
 def deal_types
@@ -38,8 +37,6 @@ def eateries
   ('Hanks Beef Sandwich Emporium')
   ;"
   SqlRunner.run(sql)
-
-
 end
 
 def eatery_id(eatery_name)
@@ -52,7 +49,6 @@ def deal_type_id(description)
   sql = "SELECT * FROM deal_types WHERE details = '#{description}';"
   result = SqlRunner.run(sql)
   return result[0]['id'].to_i
-
 end
 
 def burger_id(burger_name)
@@ -81,7 +77,6 @@ def burgers
   ;"
 
   SqlRunner.run(sql)
-
 end
 
 def deals
@@ -98,7 +93,6 @@ def deals
   ;"
 
   SqlRunner.run(sql)
-
 end
 
 def burgers_deals(options)
@@ -110,14 +104,13 @@ def burgers_deals(options)
   ;"
 
   SqlRunner.run(sql)
-
 end
 
-days()
-deal_types()
-eateries()
-burgers()
-deals()
+# days()
+# deal_types()
+# eateries()
+# burgers()
+# deals()
 
 for_bobby = {
   'eatery_id' => eatery_id('Bobbys Burger Shack'),
@@ -131,6 +124,6 @@ for_hank = {
   'deal_id' => deal_id('Hanks Half-Price Happiness')
 }
 
-burgers_deals(for_bobby)
-burgers_deals(for_hank)
+# burgers_deals(for_bobby)
+# burgers_deals(for_hank)
 

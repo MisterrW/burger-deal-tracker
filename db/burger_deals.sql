@@ -40,5 +40,4 @@ CREATE TABLE burgers_deals(
   eatery_id INT8 references eateries(id),
   burger_id INT8 references burgers(id),
   deal_id INT8 references deals(id)
-  
 );
