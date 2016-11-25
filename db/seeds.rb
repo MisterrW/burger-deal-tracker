@@ -1,4 +1,5 @@
 require_relative('sql_runner')
+require('pry-byebug')
 
 def days 
   sql = "
@@ -20,7 +21,7 @@ end
 def deal_types
   sql = "
   INSERT INTO deal_types
-  (name)
+  (details)
   VALUES
   ('half price'),
   ('burger and a pint')
@@ -43,8 +44,27 @@ end
 
 def eatery_id(eatery_name)
   sql = "SELECT * FROM eateries WHERE name = '#{eatery_name}';"
-  eatery = SqlRunner.run(sql)
-  return eatery[0]['id'].to_i
+  result = SqlRunner.run(sql)
+  return result[0]['id'].to_i
+end
+
+def deal_type_id(description)
+  sql = "SELECT * FROM deal_types WHERE details = '#{description}';"
+  result = SqlRunner.run(sql)
+  return result[0]['id'].to_i
+
+end
+
+def burger_id(burger_name)
+  sql = "SELECT * FROM burgers WHERE name = '#{burger_name}';"
+  result = SqlRunner.run(sql)
+  return result[0]['id'].to_i
+end
+
+def deal_id(deal_name)
+  sql = "SELECT * FROM deals WHERE name = '#{deal_name}';"
+  result = SqlRunner.run(sql)
+  return result[0]['id'].to_i
 end
 
 def burgers
@@ -65,14 +85,28 @@ def burgers
 end
 
 def deals
+  hp_id = deal_type_id('half price')
+  bp_id = deal_type_id('burger and a pint') 
   bobby_id = eatery_id('Bobbys Burger Shack')
   hank_id = eatery_id('Hanks Beef Sandwich Emporium') 
   sql= "
   INSERT INTO deals
   (name, eatery_id, day_id, deal_type)
   VALUES
-  ('Bobbys Budget Bonanza', #{bobby_id}, 3, 1),
-  ('Hanks Half-Price Happiness', #{hank_id}, 5, 2)
+  ('Bobbys Budget Bonanza', #{bobby_id}, 3, #{bp_id}),
+  ('Hanks Half-Price Happiness', #{hank_id}, 5, #{hp_id})
+  ;"
+
+  SqlRunner.run(sql)
+
+end
+
+def burgers_deals(options)
+  sql= "
+  INSERT INTO burgers_deals
+  (eatery_id, burger_id, deal_id)
+  VALUES
+  (#{options['eatery_id']}, #{options['burger_id']}, #{options['deal_id']})
   ;"
 
   SqlRunner.run(sql)
@@ -80,8 +114,23 @@ def deals
 end
 
 days()
+deal_types()
 eateries()
 burgers()
 deals()
 
+for_bobby = {
+  'eatery_id' => eatery_id('Bobbys Burger Shack'),
+  'burger_id' => burger_id('Bobbys Basic Beef'),
+  'deal_id' => deal_id('Bobbys Budget Bonanza')
+}
+
+for_hank = {
+  'eatery_id' => eatery_id('Hanks Beef Sandwich Emporium'),
+  'burger_id' => burger_id('Hanks Heap of Hog'),
+  'deal_id' => deal_id('Hanks Half-Price Happiness')
+}
+
+burgers_deals(for_bobby)
+burgers_deals(for_hank)
 

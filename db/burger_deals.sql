@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS burgers_deals;
 DROP TABLE IF EXISTS deals;
 DROP TABLE IF EXISTS burgers;
 DROP TABLE IF EXISTS eateries;
-DROP TABLE IF EXISTS deal_types
+DROP TABLE IF EXISTS deal_types;
 DROP TABLE IF EXISTS days;
 
 CREATE TABLE days(
@@ -31,13 +31,14 @@ CREATE TABLE deals(
   id SERIAL8 primary key,
   eatery_id INT8 references eateries(id),
   day_id INT8 references days(id),
-  deal_type INT8 references deal_types(id)
-  name VARCHAR(255),
+  deal_type INT8 references deal_types(id),
+  name VARCHAR(255)
 );
 
 CREATE TABLE burgers_deals(
   id SERIAL8 primary key,
+  eatery_id INT8 references eateries(id),
   burger_id INT8 references burgers(id),
-  deal_id INT8 references deals(id),
-  eatery_id INT8 references eateries(id)
+  deal_id INT8 references deals(id)
+  
 );
