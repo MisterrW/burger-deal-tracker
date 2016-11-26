@@ -8,7 +8,6 @@ class BurgersDeals
   end
 
   def save
-    binding.pry
     sql= "
     INSERT INTO burgers_deals
     (eatery_id, burger_id, deal_id)

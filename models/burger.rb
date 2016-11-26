@@ -50,6 +50,6 @@ class Burger
     sql = "
     DELETE FROM burgers
     ;"
-    result = SqlRunner.run(sql)
+    SqlRunner.run(sql)
   end
 end

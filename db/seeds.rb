@@ -96,23 +96,46 @@ class Seeds
       })
     deal2.save
 
+    deal3 = Deal.new({
+      'eatery_id' => Eatery.get_by_name("Bobbys Burger Shack")['id'].to_i,
+      'deal_type' => self.deal_type_id('half price'),
+      'day_id' => 1,
+      'name' => 'Bobbys Half-off Mondays'
+      })
+    deal3.save
     # join table
 
-    for_bobby = BurgersDeals.new({
+    for_bobby1 = BurgersDeals.new({
       'eatery_id' => Eatery.get_by_name("Bobbys Burger Shack")['id'].to_i,
       'burger_id' => Burger.get_by_name('Bobbys Basic Beef')['id'].to_i,
       'deal_id' => Deal.get_by_name('Bobbys Budget Bonanza')['id'].to_i
     })
 
-    for_bobby.save
+    for_bobby1.save
 
-    for_hank = BurgersDeals.new({
+    for_bobby2 = BurgersDeals.new({
+      'eatery_id' => Eatery.get_by_name("Bobbys Burger Shack")['id'].to_i,
+      'burger_id' => Burger.get_by_name('Bobbys Basic Beef')['id'].to_i,
+      'deal_id' => Deal.get_by_name('Bobbys Half-off Mondays')['id'].to_i
+    })
+
+    for_bobby2.save
+
+    for_hank1 = BurgersDeals.new({
       'eatery_id' => Eatery.get_by_name("Hanks Beef Sandwich Emporium")['id'].to_i,
       'burger_id' => Burger.get_by_name('Hanks Heap of Hog')['id'].to_i,
       'deal_id' => Deal.get_by_name('Hanks Half-Price Happiness')['id'].to_i
     })
 
-    for_hank.save
+    for_hank1.save
+
+    for_hank2 = BurgersDeals.new({
+      'eatery_id' => Eatery.get_by_name("Hanks Beef Sandwich Emporium")['id'].to_i,
+      'burger_id' => Burger.get_by_name('Hanks Vegan Surprise')['id'].to_i,
+      'deal_id' => Deal.get_by_name('Hanks Half-Price Happiness')['id'].to_i
+    })
+
+    for_hank2.save
 
   end
 end
