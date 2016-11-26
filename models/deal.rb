@@ -9,6 +9,19 @@ class Deal
     @deal_type = options['deal_type'].to_i
   end
 
+  def save
+    sql = "
+    INSERT INTO deals
+    (eatery_id, day_id, deal_type, name)
+    VALUES
+    (#{@eatery_id}, #{@day_id}, #{@deal_type}, '#{@name}')
+    RETURNING *
+    ;"
+    result = SqlRunner.run(sql)
+    @id = result[0]['id'].to_i
+  end
+
+
   def self.all
     sql = "
     SELECT * FROM deals

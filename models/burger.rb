@@ -8,6 +8,18 @@ class Burger
     @price = options['price'].to_i
   end
 
+  def save
+    sql = "
+    INSERT INTO burgers
+    (eatery_id, price, name)
+    VALUES
+    (#{@eatery_id}, #{@price}, '#{@name}')
+    RETURNING *
+    ;"
+    result = SqlRunner.run(sql)
+    @id = result[0]['id'].to_i
+  end
+
   def self.all
     sql = "
     SELECT * FROM burgers

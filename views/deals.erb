@@ -1,0 +1,8 @@
+<h1> All deals by eatery </h1>
+<% @deals.each do |deal| %>
+<h2><%= "#{deal['eatery']}"%></h2>
+<p><%= "Deal: #{deal['deal']}"%></p>
+<p><%= "Deal type: #{deal['details']}"%></p>
+<p><%= "Day: #{deal['day']}"%></p>
+<p><%= "Burger: #{deal['burger']}"%></p>
+<% end %>
