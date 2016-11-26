@@ -39,6 +39,9 @@ class Eatery
     id = self.get_by_name(name)['id'].to_i
 
     sql = "
+    DELETE FROM burgers_deals
+    WHERE eatery_id = #{id}
+    ;
     DELETE FROM burgers
     WHERE eatery_id = #{id}
     ;
@@ -57,6 +60,7 @@ class Eatery
 
   def self.delete_all!
     sql = "
+    DELETE FROM burgers_deals;
     DELETE FROM burgers;
     DELETE FROM deals;
     DELETE FROM eateries

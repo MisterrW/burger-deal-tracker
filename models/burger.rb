@@ -25,8 +25,17 @@ class Burger
     SELECT * FROM burgers
     ;"
     result = SqlRunner.run(sql)
-    burgers = result.map{|hash| Eatery.new(hash)}
+    burgers = result.map{|hash| Burger.new(hash)}
     return burgers
+  end
+
+  def self.get_by_name(name)
+    sql = "
+    SELECT * FROM burgers
+    WHERE name = '#{name}'
+    ;"
+    result = SqlRunner.run(sql)
+    return result[0]
   end
 
   def self.delete_by_name(name)

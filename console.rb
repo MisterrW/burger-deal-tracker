@@ -4,14 +4,10 @@ require('minitest/pride')
 require_relative('models/eatery')
 require_relative('models/burger')
 require_relative('models/deal')
+require_relative('models/burgers_deals')
 require_relative('db/seeds')
 
-
-
-
-
-# Burger.delete_by_name("Gigaburger Grillfest")
-# Eatery.delete_by_name("Le Grill de Gary")
+Seeds.setup
 
 binding.pry
 nil

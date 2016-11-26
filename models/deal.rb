@@ -21,7 +21,6 @@ class Deal
     @id = result[0]['id'].to_i
   end
 
-
   def self.all
     sql = "
     SELECT * FROM deals
@@ -29,6 +28,15 @@ class Deal
     result = SqlRunner.run(sql)
     deals = result.map{|hash| Deal.new(hash)}
     return deals
+  end
+
+  def self.get_by_name(name)
+    sql = "
+    SELECT * FROM deals
+    WHERE name = '#{name}'
+    ;"
+    result = SqlRunner.run(sql)
+    return result[0]
   end
 
   def self.delete_all
