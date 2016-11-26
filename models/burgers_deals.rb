@@ -19,4 +19,15 @@ class BurgersDeals
     @id = result[0]['id'].to_i
   end
 
+  def self.all_by_eatery_and_deal
+    all_combos = Deal.all_pretty
+    all_by_eatery = all_combos.group_by { |x| x['eatery']}
+    all_by_deal = {}
+    all_by_eatery.each do |key,value|
+      temp_thing = {key => value.group_by {|x| x['deal']}}
+      all_by_deal.merge!(temp_thing)
+    end
+    return all_by_deal
+  end
+
 end
