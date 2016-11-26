@@ -29,7 +29,7 @@ class Deal
   def self.all_pretty
     all_deals = []
     sql = '
-    SELECT e.name AS "eatery", b.name AS "burger", d.name AS "deal", t.details AS "details", y.name AS "day", y.id AS "day_id"
+    SELECT e.name AS "eatery", e.id AS "eatery_id", b.name AS "burger", d.name AS "deal", t.details AS "details", y.name AS "day", y.id AS "day_id"
     FROM eateries e
     INNER JOIN burgers b
     ON b.eatery_id = e.id
@@ -46,6 +46,7 @@ class Deal
     
     results.each do |result|
       result['day_id'] = result['day_id'].to_i
+      result['eatery_id'] = result['eatery_id'].to_i
       all_deals << result
     end
     return all_deals
@@ -62,7 +63,15 @@ class Deal
     return deals
   end
 
-  def self.by_eatery(eatery)
+  def self.by_eatery(eatery_id)
+    deals = []
+    all_deals = self.all_pretty()
+    all_deals.each do |deal|
+      if deal['eatery_id'] == eatery_id
+        deals << deal
+      end
+    end
+    return deals
   end
 
   def self.by_deal_type(deal_type)
