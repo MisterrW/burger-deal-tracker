@@ -26,8 +26,39 @@ class Eatery
     eateries = result.map{|hash| Eatery.new(hash)}
   end
 
-  def self.delete_all
+  def self.get_by_name(name)
     sql = "
+    SELECT * FROM eateries
+    WHERE name = '#{name}'
+    ;"
+    result = SqlRunner.run(sql)
+    return result[0]
+  end
+
+  def self.delete_by_name(name)
+    id = self.get_by_name(name)['id'].to_i
+
+    sql = "
+    DELETE FROM burgers
+    WHERE eatery_id = #{id}
+    ;
+    DELETE FROM deals
+    WHERE eatery_id = #{id}
+    ;"
+    SqlRunner.run(sql)
+
+    sql = "
+    DELETE FROM eateries
+    WHERE name = '#{name}'
+    RETURNING *
+    ;"
+    result = SqlRunner.run(sql)
+  end
+
+  def self.delete_all!
+    sql = "
+    DELETE FROM burgers;
+    DELETE FROM deals;
     DELETE FROM eateries
     ;"
     result = SqlRunner.run(sql)

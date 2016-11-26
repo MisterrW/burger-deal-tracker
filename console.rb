@@ -1,15 +1,17 @@
 require('pry-byebug')
 require('minitest/autorun')
 require('minitest/pride')
-require_relative('models/eatery.rb')
-require_relative('models/burger.rb')
-require_relative('models/deal.rb')
+require_relative('models/eatery')
+require_relative('models/burger')
+require_relative('models/deal')
+require_relative('db/seeds')
 
 
 
-Deal.all_pretty
-Deal.by_day(3)
-nil
+
+
+# Burger.delete_by_name("Gigaburger Grillfest")
+# Eatery.delete_by_name("Le Grill de Gary")
 
 binding.pry
 nil

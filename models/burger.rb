@@ -26,6 +26,15 @@ class Burger
     ;"
     result = SqlRunner.run(sql)
     burgers = result.map{|hash| Eatery.new(hash)}
+    return burgers
+  end
+
+  def self.delete_by_name(name)
+    sql = "
+    DELETE FROM burgers
+    WHERE name = '#{name}'
+    ;"
+    SqlRunner.run(sql)
   end
 
   def self.delete_all
