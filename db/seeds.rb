@@ -106,11 +106,11 @@ def burgers_deals(options)
   SqlRunner.run(sql)
 end
 
-# days()
-# deal_types()
-# eateries()
-# burgers()
-# deals()
+days()
+deal_types()
+eateries()
+burgers()
+deals()
 
 for_bobby = {
   'eatery_id' => eatery_id('Bobbys Burger Shack'),
@@ -124,6 +124,6 @@ for_hank = {
   'deal_id' => deal_id('Hanks Half-Price Happiness')
 }
 
-# burgers_deals(for_bobby)
-# burgers_deals(for_hank)
+burgers_deals(for_bobby)
+burgers_deals(for_hank)
 
