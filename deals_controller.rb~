@@ -3,7 +3,7 @@ require_relative('models/burgers_deals')
 
 get '/deals' do
   @deals = BurgersDeals.all_by_eatery_and_deal
- 
+  binding.pry
   erb(:deals)
 end
 
@@ -15,7 +15,7 @@ get '/days/:day' do
     end
   end
   
-  
+  binding.pry
   erb(:deals_today)
 end
 
