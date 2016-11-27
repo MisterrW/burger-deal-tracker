@@ -30,4 +30,42 @@ class BurgersDeals
     return all_by_deal
   end
 
+  def self.all_by_day_and_eatery
+    all_combos = Deal.all_pretty
+    all_by_day = all_combos.group_by { |x| x['day']}
+    all_by_eatery = {}
+    all_by_day.each do |key,value|
+      value.each do |item|
+        item.delete('day')
+        item.delete('day_id')
+      end
+      temp_thing = {key => value.group_by {|x| x['eatery']}}
+      all_by_eatery.merge!(temp_thing)
+    end
+    return all_by_eatery
+  end
+
+  def self.all_by_deal
+    all_by_deal = {}
+    all_by_eatery = self.all_by_day_and_eatery
+    all_by_eatery.each do |key, value|
+      # binding.pry
+      value.each do |key2, value2|
+        # binding.pry
+        value2.each do |item|
+          item.delete('eatery')
+          item.delete('eatery_id')
+        end
+        temp_thing = {
+          key => {
+            key2 => value2.group_by {|x| x['deal']}
+            } 
+          }
+        # binding.pry
+        all_by_deal.merge!(temp_thing)
+      end
+    end
+    return all_by_deal
+  end
+
 end

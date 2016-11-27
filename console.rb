@@ -7,7 +7,7 @@ require_relative('models/deal')
 require_relative('models/burgers_deals')
 require_relative('db/seeds')
 
-Seeds.setup
+# Seeds.setup
 
 # all_combos = Deal.all_pretty
 # all_by_eatery = all_combos.group_by { |x| x['eatery']}
@@ -18,6 +18,7 @@ Seeds.setup
 #   all_by_deal.merge!(temp_thing)
 # end
 
+BurgersDeals.all_by_deal
 
 binding.pry
 nil

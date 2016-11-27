@@ -1,15 +1,23 @@
-<h1> All deals by eatery </h1>
-<% @deals.each do |key, value| %>
-<h2><%= "#{key}"%></h2>
-<% value.each do |key2, value2| %>
-<h3>Deal: <%= "#{key2}"%></h3>
-<p>Day: <%= "#{value2[0]['day']}" %></p>
-<p>Deal type: <%= "#{value2[0]['details']}" %></p>
-<p>Burgers included:</p>
-<ul>
-<%value2.each do |x| %>
-<li><%= "#{x['burger']}"%></li>
-<% end %>
-</ul>
-<% end %>
-<% end %>
+<div>
+  <h1> All deals by eatery </h1>
+  <% @deals.each do |key, value| %>
+  <div margin-top=10px;>
+    <h2><%= "#{key}"%></h2>
+    <div class="deals">
+      <% value.each do |key2, value2| %>
+      <div class="deal">
+        <h3><%= "#{key2}"%></h3>
+        <p>Day: <%= "#{value2[0]['day']}" %></p>
+        <p>Deal type: <%= "#{value2[0]['details']}" %></p>
+        <p>Burgers included:</p>
+        <ul>
+          <% value2.each do |x| %>
+          <li><%= "#{x['burger']}"%></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+body {
+  font: helvetica;
+  font-family: sans-serif;
+  margin-top: 30px;
+}
+
+div {
+  border: 1px solid #d3d3d3;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+div.main {
+  display: flex;
+}
+
+div.deals {
+  display: flex;
+  margin: 0;
+}
+
+div.deal {
+  /*background-color: gray;*/
+  margin: 20px;
+}
+
+nav {
+  margin: 0px;
+  margin-right: 30px;
+}
+
+nav ul {
+  margin: 0;
+
+}
+
+nav li {
+  list-style-type: none;
+  margin-bottom: 5px;
+}
