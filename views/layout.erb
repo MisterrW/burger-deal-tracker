@@ -5,13 +5,17 @@
   <link rel="stylesheet" type="text/css" href="/style.css"
 </head>
 <body>
+<div class="header">
+<h1>Jarrod's Burger Tracker</h1>
+<h3>welcome, burger lover.</h3>
+</div>
   <div class="main">
 
     <div>
       <nav>
         <ul>
-          <li><a href="/deals">All deals by eatery</a></li>
-          <li>All deals by day
+          <li><a href="/deals"><h3>All deals by eatery</h3></a></li>
+          <li><h3>All deals by day</h3>
             <ul>
               <li><a href="/days/monday">Monday</a></li>
               <li><a href="/days/tuesday">Tuesday</a></li>
@@ -22,12 +26,19 @@
               <li><a href="/days/sunday">Sunday</a></li>
             </ul>
           </li>
+          <li><h3>Add your own!</h3></li>
         </ul>
+        <img class="burger" src="/images/burgersketch.png" alt="burger sketch"/>
       </nav>
+
     </div>
     <div>
 
       <%= yield %>
+        
+    </div>
+    
+    
 
     </div>
   </body>

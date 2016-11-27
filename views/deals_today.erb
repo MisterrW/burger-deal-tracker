@@ -2,7 +2,7 @@
   <h1>Deals for <%=params[:day].capitalize%></h1>
   <% unless @deals_today == nil %>
   <% @deals_today.each do |key, value| %>
-  <div margin-top=10px;>
+  <div margin-top=20px;>
     <h2><%= "#{key}"%></h2>
     <div class="deals">
       <% value.each do |key2, value2| %>
@@ -21,7 +21,7 @@
     <% end %>
   </div>
   <% else %>
-  <div><p>Sorry, no deals today!</p></div>
+  <div><h3>Sorry, no deals today!</h3></div>
   <% end %>
 
 
