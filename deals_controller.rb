@@ -27,7 +27,6 @@ get '/days/:day_id' do
       @day = day
     end
   end
-  
   erb(:deals_today)
 end
 

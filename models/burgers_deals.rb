@@ -36,7 +36,7 @@ class BurgersDeals
     all_by_eatery = {}
     all_by_day.each do |key,value|
       value.each do |item|
-        item.delete('day_id')
+        item.delete('day')
       end
       temp_thing = {key => value.group_by {|x| x['eatery']}}
       all_by_eatery.merge!(temp_thing)
