@@ -1,5 +1,7 @@
 <div>
-  <h1>Deals for <%=params[:day].capitalize%></h1>
+<div class="page_title">
+  <h1>Deals for <%=@day.name%></h1>
+  </div>
   <% unless @deals_today == nil %>
   <% @deals_today.each do |key, value| %>
   <div margin-top=20px;>
@@ -21,8 +23,6 @@
     <% end %>
   </div>
   <% else %>
-  <div><h3>Sorry, no deals today!</h3></div>
+  <div><h2>Sorry, no deals today!</h2></div>
   <% end %>
-
-
 </div>

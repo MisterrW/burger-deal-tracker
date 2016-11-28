@@ -5,6 +5,7 @@ require_relative('models/eatery')
 require_relative('models/burger')
 require_relative('models/deal')
 require_relative('models/burgers_deals')
+require_relative('models/days')
 require_relative('db/seeds')
 
 # Seeds.setup
@@ -18,7 +19,7 @@ require_relative('db/seeds')
 #   all_by_deal.merge!(temp_thing)
 # end
 
-BurgersDeals.all_by_deal
+# BurgersDeals.all_by_eatery_and_deal
 
 binding.pry
 nil

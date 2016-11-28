@@ -1,0 +1,20 @@
+<div>
+
+  <h1>Add to the Tracker!</h1>
+
+  <div class="deal">
+    <p>Howdy! Tracked down any good burger joints, burgers or deals lately? Help us out!</p> 
+    <p>To add an eatery, click here:</p>
+  </div>
+
+  <h3><a href="/joint/new">Add eatery</a></h3>
+
+  <div class="deal">
+    <p>To add deals or burgers to an existing joint, click on it below:</p>
+  </div>
+  
+  <% @eateries.each do |eatery| %>
+  <h3><a><%= "#{eatery.name}" %></a></h3>
+  <% end %>
+
+</div>

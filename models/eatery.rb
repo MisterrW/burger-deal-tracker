@@ -1,6 +1,8 @@
 require_relative('../db/sql_runner.rb')
 
 class Eatery
+  attr_accessor :name
+  attr_reader :id
   def initialize(options)
     @name = options['name']
     @id = options['id'].to_i if options['id']
@@ -24,6 +26,7 @@ class Eatery
     ;"
     result = SqlRunner.run(sql)
     eateries = result.map{|hash| Eatery.new(hash)}
+    return eateries
   end
 
   def self.get_by_name(name)

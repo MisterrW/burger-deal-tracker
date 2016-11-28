@@ -32,11 +32,10 @@ class BurgersDeals
 
   def self.all_by_day_and_eatery
     all_combos = Deal.all_pretty
-    all_by_day = all_combos.group_by { |x| x['day']}
+    all_by_day = all_combos.group_by { |x| x['day_id']}
     all_by_eatery = {}
     all_by_day.each do |key,value|
       value.each do |item|
-        item.delete('day')
         item.delete('day_id')
       end
       temp_thing = {key => value.group_by {|x| x['eatery']}}
