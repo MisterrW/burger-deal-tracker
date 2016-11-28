@@ -1,6 +1,8 @@
 require_relative('../db/sql_runner.rb')
 
 class Burger
+  attr_accessor :name, :price
+  attr_reader :eatery_id, :id
   def initialize(options)
     @name = options['name']
     @id = options['id'].to_i if options['id']

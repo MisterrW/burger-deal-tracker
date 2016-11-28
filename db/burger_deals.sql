@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS deals;
 DROP TABLE IF EXISTS burgers;
 DROP TABLE IF EXISTS eateries;
 DROP TABLE IF EXISTS days;
+DROP TABLE IF EXISTS temp_id_store;
 
 CREATE TABLE days(
   id INT8 primary key,
@@ -35,3 +36,7 @@ CREATE TABLE burgers_deals(
   burger_id INT8 references burgers(id),
   deal_id INT8 references deals(id)
 );
+
+CREATE TABLE temp_id_store(
+  id INT8 primary key
+)

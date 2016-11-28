@@ -1,17 +1,9 @@
 <div>
 
-  <h2>This is where you add a new deal</h2>
+  <h1><%=@eatery.name%></h1>
+  <h2>Add new deal</h2>
 
-  <form action="/joint/confirm" method ="post">
-    <p>
-      <label>
-        Eatery: <select name="eatery_id">
-          <% @eateries.each do |eatery| %>
-          <option value="<%eatery.id%>"><%=eatery.name%></option>
-          <%end%>
-        </select>
-      </label>
-    </p>
+  <form action="/deal/confirm" method ="post">
 
     <p>
       <label>
@@ -35,6 +27,13 @@
       </label>
     </p>
 
+    <h3>Select burgers in this deal (optional)</h3>
+    <p>
+    <% @burgers.each do |burger| %>
+    <input type="checkbox" name="burger[]" value="<%=burger.id%>"><%=burger.name%><br>
+    <% end %>
+    <%= @noburgers %>
+    </p>
     <p>
       <input type="submit" value="Add this deal" />
     </p>

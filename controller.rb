@@ -4,6 +4,7 @@ require_relative('deals_controller')
 require_relative('burger_controller')
 require_relative('eatery_controller')
 require_relative('models/eatery')
+require_relative('models/temp_id_store')
 
 get '/new/index' do
   @eateries = Eatery.all
@@ -12,23 +13,18 @@ get '/new/index' do
 end
 
 post '/deal_or_burger' do
-  @id = params[:eatery_id].to_i
+  TempIdStore.save(params[:eatery_id].to_i)
 
-  eatery = Eatery.get_by_id(params[:eatery_id])
-  # binding.pry
   if params["deal_or_burger"] == "deal"
-    binding.pry
-    redirect to '/eateries/new_deal/#{eatery.id.to_s}'
+    # binding.pry
+    redirect to '/deal/new'
   elsif params["deal_or_burger"] == "burger"
-    redirect to '/eateries/new_burger/#{eatery.id}'
+    redirect to '/burger/new'
   end
   binding.pry
 end
 
-# get '/eateries/new_deal do
-#   "hello"
-# end
 
-# get '/eateries/new_burger/'' do
-#   "thererc"
-# end
+
+get '/burger/new' do
+end
