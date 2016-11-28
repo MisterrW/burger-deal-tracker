@@ -10,11 +10,26 @@
   <h3><a href="/joint/new">Add eatery</a></h3>
 
   <div class="deal">
-    <p>To add deals or burgers to an existing joint, click on it below:</p>
+    <p>To add deals or burgers to an existing joint, select it from the list below, pick 'New deal' or 'New burger', and click 'go'.</p>
   </div>
   
-  <% @eateries.each do |eatery| %>
-  <h3><a><%= "#{eatery.name}" %></a></h3>
-  <% end %>
-
+  <form action="/deal_or_burger" method ="post">
+    <p>
+      <label>
+      <h3>Eatery:</h3>
+        <select name="eatery_id">
+          <% @eateries.each do |eatery| %>
+          <option value="<%=eatery.id%>"><%=eatery.name%></option>
+          <%end%>
+        </select>
+      </label>
+    </p>
+    <p>
+      <input type="radio" name="deal_or_burger" value="burger" />New Burger
+      <input type="radio" name="deal_or_burger" value="deal" />New Deal
+    </p>
+    <p>
+      <input type="submit" value="Go!" />
+    </p>
+  </form>
 </div>

@@ -38,6 +38,17 @@ class Eatery
     return result[0]
   end
 
+  def self.get_by_id(id)
+    id = id.to_i
+    sql = "
+    SELECT * FROM eateries
+    WHERE id = #{id}
+    ;"
+    result = SqlRunner.run(sql)
+    return Eatery.new(result[0])
+  end
+
+
   def self.delete_by_name(name)
     id = self.get_by_name(name)['id'].to_i
 

@@ -9,11 +9,6 @@ CREATE TABLE days(
   name VARCHAR(255)
 );
 
--- CREATE TABLE deal_types(
---   id SERIAL8 primary key,
---   details VARCHAR(255)
--- );
-
 CREATE TABLE eateries(
   id SERIAL8 primary key,
   name VARCHAR(255)

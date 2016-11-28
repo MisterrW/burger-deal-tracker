@@ -21,6 +21,12 @@
 
     <p>
       <label>
+      Description of deal: <input type="text" name="description" />
+      </label>
+    </p>
+    
+    <p>
+      <label>
         Day: <select name="day_id">
           <% @days.each do |day| %>
           <option value="<%day.id%>"><%=day.name%></option>
@@ -28,18 +34,6 @@
         </select>
       </label>
     </p>
-
-<!--     <p>
-      <label>
-        <select name="eatery_id">
-          <% @eateries.each do |eatery| %>
-          <option value="<%eatery.id%>"><%=eatery.name%></option>
-          <%end%>
-        </select>
-      </label>
-    </p> -->
-
-
 
     <p>
       <input type="submit" value="Add this deal" />

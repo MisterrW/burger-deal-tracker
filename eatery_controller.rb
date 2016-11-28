@@ -13,3 +13,4 @@ end
 get '/joint/confirm' do
   erb(:joint_added)
 end
+
