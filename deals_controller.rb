@@ -51,12 +51,34 @@ get '/deal/new' do
 end
 
 post '/deal/confirm' do
-  binding.pry
-  joint = Eatery.new( params )
-  joint.save
+  burger_ids = params['burger']
+  for_deal = params
+  for_deal.delete('burger')
+
+  new_deal = Deal.new( for_deal )
+  new_deal.save
+
+  burger_ids.each do |burger_id|
+    burger_deal = BurgersDeals.new({
+      'burger_id' => burger_id,
+      'deal_id' => new_deal.id,
+      'eatery_id' => new_deal.eatery_id
+    })
+    burger_deal.save
+  end
+
   redirect to '/deal/confirm'
 end
 
 get '/deal/confirm' do
   erb(:deal_added)
 end
+
+
+
+
+
+
+
+
+

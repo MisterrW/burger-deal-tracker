@@ -1,6 +1,8 @@
 require_relative('../db/sql_runner.rb')
 
 class Deal
+  attr_reader :name, :id, :eatery_id, :day_id, :description
+  
   def initialize(options)
     @name = options['name']
     @id = options['id'].to_i if options['id']
@@ -18,8 +20,8 @@ class Deal
     RETURNING *
     ;"
     result = SqlRunner.run(sql)
-    binding.pry
     @id = result[0]['id'].to_i
+    binding.pry
   end
 
   def self.all

@@ -21,7 +21,7 @@
       <label>
         Day: <select name="day_id">
           <% @days.each do |day| %>
-          <option value="<%day.id%>"><%=day.name%></option>
+          <option value="<%=day.id%>"><%=day.name%></option>
           <%end%>
         </select>
       </label>
@@ -34,6 +34,7 @@
     <% end %>
     <%= @noburgers %>
     </p>
+    <input type="hidden" name="eatery_id" value="<%=@eatery.id%>"
     <p>
       <input type="submit" value="Add this deal" />
     </p>
