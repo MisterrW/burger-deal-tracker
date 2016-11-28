@@ -67,13 +67,8 @@ post '/deal/confirm' do
     burger_deal.save
   end
 
-  redirect to '/deal/confirm'
+  redirect to '/deals'
 end
-
-get '/deal/confirm' do
-  erb(:deal_added)
-end
-
 
 
 

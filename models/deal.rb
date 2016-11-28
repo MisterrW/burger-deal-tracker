@@ -21,7 +21,6 @@ class Deal
     ;"
     result = SqlRunner.run(sql)
     @id = result[0]['id'].to_i
-    binding.pry
   end
 
   def self.all

@@ -1,0 +1,33 @@
+<div>
+
+  <h1><%=@eatery.name%></h1>
+  <h2>Add new burger</h2>
+
+  <form action="/burger/confirm" method ="post">
+
+    <p>
+      <label>
+      Burger name: <input type="text" name="name" />
+      </label>
+    </p>
+
+    <p>
+      <label>
+      Price: <input type="number" name="price" min="0" max="100"/>
+      </label>
+    </p>
+    
+    <h3>Select deals applying to this burger (optional)</h3>
+    <p>
+    <% @deals.each do |deal| %>
+    <input type="checkbox" name="deal[]" value="<%=deal.id%>"><%=deal.name%><br>
+    <% end %>
+    <%= @nodeals %>
+    </p>
+    <input type="hidden" name="eatery_id" value="<%=@eatery.id%>"
+    <p>
+      <input type="submit" value="Add this burger" />
+    </p>
+  </form>
+
+</div>
