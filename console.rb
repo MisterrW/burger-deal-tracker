@@ -21,5 +21,7 @@ require_relative('db/seeds')
 
 # BurgersDeals.all_by_eatery_and_deal
 
+Seeds.days
+Seeds.setup
 binding.pry
 nil

@@ -6,18 +6,19 @@ class Deal
     @id = options['id'].to_i if options['id']
     @eatery_id = options['eatery_id'].to_i
     @day_id = options['day_id'].to_i
-    @deal_type = options['deal_type'].to_i
+    @description = options['description']
   end
 
   def save
     sql = "
     INSERT INTO deals
-    (eatery_id, day_id, deal_type, name)
+    (eatery_id, day_id, description, name)
     VALUES
-    (#{@eatery_id}, #{@day_id}, #{@deal_type}, '#{@name}')
+    (#{@eatery_id}, #{@day_id}, '#{@description}', '#{@name}')
     RETURNING *
     ;"
     result = SqlRunner.run(sql)
+    binding.pry
     @id = result[0]['id'].to_i
   end
 
@@ -50,7 +51,7 @@ class Deal
   def self.all_pretty
     all_deals = []
     sql = '
-    SELECT e.name AS "eatery", e.id AS "eatery_id", b.name AS "burger", d.name AS "deal", t.details AS "details", y.name AS "day", y.id AS "day_id"
+    SELECT e.name AS "eatery", e.id AS "eatery_id", b.name AS "burger", d.name AS "deal", d.description AS "details", y.name AS "day", y.id AS "day_id"
     FROM eateries e
     INNER JOIN burgers b
     ON b.eatery_id = e.id
@@ -58,8 +59,6 @@ class Deal
     ON bd.burger_id = b.id
     LEFT JOIN deals d
     ON bd.deal_id = d.id
-    INNER JOIN deal_types t
-    ON d.deal_type = t.id
     INNER JOIN days y
     ON d.day_id = y.id
     ;'

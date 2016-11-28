@@ -9,10 +9,10 @@ CREATE TABLE days(
   name VARCHAR(255)
 );
 
-CREATE TABLE deal_types(
-  id SERIAL8 primary key,
-  details VARCHAR(255)
-);
+-- CREATE TABLE deal_types(
+--   id SERIAL8 primary key,
+--   details VARCHAR(255)
+-- );
 
 CREATE TABLE eateries(
   id SERIAL8 primary key,
@@ -30,7 +30,7 @@ CREATE TABLE deals(
   id SERIAL8 primary key,
   eatery_id INT8 references eateries(id),
   day_id INT8 references days(id),
-  deal_type INT8 references deal_types(id),
+  description VARCHAR(255),
   name VARCHAR(255)
 );
 

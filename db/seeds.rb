@@ -71,26 +71,18 @@ class Seeds
       })
     burger5.save
 
-    # deals
-
-    def self.deal_type_id(description)
-      sql = "SELECT * FROM deal_types WHERE details = '#{description}';"
-      result = SqlRunner.run(sql)
-      return result[0]['id'].to_i
-    end
-
-
     deal1 = Deal.new({
       'eatery_id' => Eatery.get_by_name("Bobbys Burger Shack")['id'].to_i,
-      'deal_type' => self.deal_type_id('burger and a pint'),
+      'description' => 'burger and a pint',
       'day_id' => 3,
       'name' => 'Bobbys Budget Bonanza'
       })
+    binding.pry
     deal1.save
 
     deal2 = Deal.new({
       'eatery_id' => Eatery.get_by_name("Hanks Beef Sandwich Emporium")['id'].to_i,
-      'deal_type' => self.deal_type_id('half price'),
+      'description' => 'half price',
       'day_id' => 5,
       'name' => 'Hanks Half-Price Happiness'
       })
@@ -98,7 +90,7 @@ class Seeds
 
     deal3 = Deal.new({
       'eatery_id' => Eatery.get_by_name("Bobbys Burger Shack")['id'].to_i,
-      'deal_type' => self.deal_type_id('half price'),
+      'description' => 'half price',
       'day_id' => 1,
       'name' => 'Bobbys Half-off Mondays'
       })
