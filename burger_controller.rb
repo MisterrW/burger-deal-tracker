@@ -24,13 +24,15 @@ post '/burger/confirm' do
   new_burger = Burger.new( for_burger )
   new_burger.save
 
-  deal_ids.each do |deal_id|
-    burger_deal = BurgersDeals.new({
-      'burger_id' => new_burger.id,
-      'deal_id' => deal_id,
-      'eatery_id' => new_burger.eatery_id
-    })
-    burger_deal.save
+  if deal_ids
+    deal_ids.each do |deal_id|
+      burger_deal = BurgersDeals.new({
+        'burger_id' => new_burger.id,
+        'deal_id' => deal_id,
+        'eatery_id' => new_burger.eatery_id
+        })
+      burger_deal.save
+    end
   end
 
   redirect to '/deals'

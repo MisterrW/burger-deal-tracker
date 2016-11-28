@@ -9,7 +9,7 @@ end
 
 get '/deals' do
   @deals = BurgersDeals.all_by_eatery_and_deal
- 
+  
   erb(:deals)
 end
 
@@ -58,15 +58,16 @@ post '/deal/confirm' do
   new_deal = Deal.new( for_deal )
   new_deal.save
 
-  burger_ids.each do |burger_id|
-    burger_deal = BurgersDeals.new({
-      'burger_id' => burger_id,
-      'deal_id' => new_deal.id,
-      'eatery_id' => new_deal.eatery_id
-    })
-    burger_deal.save
+  if burger_ids
+    burger_ids.each do |burger_id|
+      burger_deal = BurgersDeals.new({
+        'burger_id' => burger_id,
+        'deal_id' => new_deal.id,
+        'eatery_id' => new_deal.eatery_id
+        })
+      burger_deal.save
+    end
   end
-
   redirect to '/deals'
 end
 
