@@ -1,10 +1,14 @@
 require('sinatra')
 require('sinatra/contrib/all')
-require_relative('deals_controller')
-require_relative('burger_controller')
-require_relative('eatery_controller')
+require_relative('controllers/deals_controller')
+require_relative('controllers/burger_controller')
+require_relative('controllers/eatery_controller')
 require_relative('models/eatery')
 require_relative('models/temp_id_store')
+require_relative('models/deal')
+require_relative('models/burgers_deals')
+require_relative('models/days')
+require_relative('models/burger')
 
 get '/new/index' do
   @eateries = Eatery.all

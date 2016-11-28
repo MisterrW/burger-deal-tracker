@@ -1,7 +1,3 @@
-require_relative('models/deal')
-require_relative('models/burgers_deals')
-require_relative('models/days')
-require_relative('models/burger')
 
 get '/' do
   redirect to ('/deals')

@@ -1,4 +1,4 @@
-require_relative('models/eatery')
+
 
 get '/joint/new' do
   erb(:new_eatery)
