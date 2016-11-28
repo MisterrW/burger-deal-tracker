@@ -30,7 +30,19 @@ get '/days/:day_id' do
   erb(:deals_today)
 end
 
-get '/deals/new' do
-
+get '/deal/new' do
+  @eateries = Eatery.all
+  # @deal_types = Deal_types.all
+  @days = Day.all
   erb(:new_deal)
+end
+
+post '/deal/confirm' do
+  joint = Eatery.new( params )
+  joint.save
+  redirect to '/deal/confirm'
+end
+
+get '/deal/confirm' do
+  erb(:joint_added)
 end

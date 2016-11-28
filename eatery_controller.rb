@@ -4,10 +4,6 @@ get '/joint/new' do
   erb(:new_eatery)
 end
 
-get '/joint/new' do
-  erb(:new_eatery)
-end
-
 post '/joint/confirm' do
   joint = Eatery.new( params )
   joint.save

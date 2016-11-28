@@ -1,17 +1,49 @@
 <div>
 
-  <h1>New Deal</h1>
+  <h2>This is where you add a new deal</h2>
 
-  <form action="/deals" method ="post">
-
+  <form action="/joint/confirm" method ="post">
     <p>
       <label>
-        <select name="eatery_name"
+        Eatery: <select name="eatery_id">
+          <% @eateries.each do |eatery| %>
+          <option value="<%eatery.id%>"><%=eatery.name%></option>
+          <%end%>
+        </select>
       </label>
     </p>
 
+    <p>
+      <label>
+      Deal name: <input type="text" name="name" />
+      </label>
+    </p>
+
+    <p>
+      <label>
+        Day: <select name="day_id">
+          <% @days.each do |day| %>
+          <option value="<%day.id%>"><%=day.name%></option>
+          <%end%>
+        </select>
+      </label>
+    </p>
+
+<!--     <p>
+      <label>
+        <select name="eatery_id">
+          <% @eateries.each do |eatery| %>
+          <option value="<%eatery.id%>"><%=eatery.name%></option>
+          <%end%>
+        </select>
+      </label>
+    </p> -->
+
+
+
+    <p>
+      <input type="submit" value="Add this deal" />
+    </p>
   </form>
 
-
 </div>
-
