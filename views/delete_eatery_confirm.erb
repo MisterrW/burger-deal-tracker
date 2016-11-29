@@ -1,0 +1,12 @@
+<div>
+  <h2>You are about to delete <%=@eatery.name%>.</h2>
+  <p>All those burgers, all those...deals...will be lost in time.</p>
+  <p>Like tears in rain.</p>
+  <p>Click 'delete' if you're sure.</p>
+
+  <form action="/joint/deleted" method ="post">
+  <input type="hidden" name="id" value="<%=@eatery.id%>"/>
+  <input type="submit" value="Delete"/>
+  </form>
+
+</div>

@@ -77,7 +77,6 @@ class Seeds
       'day_id' => 3,
       'name' => 'Bobbys Budget Bonanza'
       })
-    binding.pry
     deal1.save
 
     deal2 = Deal.new({

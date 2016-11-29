@@ -48,10 +48,7 @@ class Eatery
     return Eatery.new(result[0])
   end
 
-
-  def self.delete_by_name(name)
-    id = self.get_by_name(name)['id'].to_i
-
+  def self.delete_by_id!(id)
     sql = "
     DELETE FROM burgers_deals
     WHERE eatery_id = #{id}
@@ -66,10 +63,16 @@ class Eatery
 
     sql = "
     DELETE FROM eateries
-    WHERE name = '#{name}'
+    WHERE id = #{id}
     RETURNING *
     ;"
     result = SqlRunner.run(sql)
+    return result
+  end
+
+  def self.delete_by_name!(name)
+    id = self.get_by_name(name)['id'].to_i
+    self.delete_by_id(id)
   end
 
   def self.delete_all!

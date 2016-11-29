@@ -18,7 +18,7 @@ class BurgersDeals
     result = SqlRunner.run(sql)
     @id = result[0]['id'].to_i
   end
-
+ 
   def self.all_by_eatery_and_deal
     all_combos = Deal.all_pretty
     all_by_eatery = all_combos.group_by { |x| x['eatery']}
