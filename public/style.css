@@ -53,18 +53,30 @@ h3 {
 }
 
 div.header {
+  display: flex;
   color: #FFC125;
   background-color: #0e1717;
   -webkit-text-stroke: 0.5px black;
-  
+  font-family: 'norwester';
   /*width: 100%;*/
+  justify-content: space-between;
 }
 
 div.header h1 {
 }
 
+div.header a {
+  color: #FFC125;
+  -webkit-text-stroke: 0.5px black;
+}
+
 div.header_text {
 padding: 10px 0px 10px 30px;
+}
+
+div.header_links {
+  /*align-self: flex-end;*/
+  margin-right: 30px;
 }
 
 div.header h3 {
@@ -130,5 +142,4 @@ nav ul li ul {
 nav li {
   list-style-type: none;
   margin-bottom: 5px;
-
 }

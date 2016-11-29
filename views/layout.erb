@@ -5,14 +5,18 @@
   <link rel="stylesheet" type="text/css" href="/style.css"
 </head>
 <body>
-<div class="header">
-<div class="header_text">
-<h1>Jarrod's Burger Tracker</h1>
-<h3>welcome, burger lover.</h3>
-</div>
-</div>
+  <div class="header">
+    <div class="header_text">
+      <h1>Jarrod's Burger Tracker</h1>
+      <h3>welcome, burger lover.</h3>
+    </div>
+    <div class="header_links">
+      <br/>
+      <br/>
+      <p>select:  <a>Joints</a> || <a>Burgers</a> || <a>Deals</a></p>
+    </div>
+  </div>
   <div class="main">
-
     <div>
       <nav>
         <ul>
@@ -33,25 +37,23 @@
               <li><a href='/joint/new'>Add Eatery</a></li>
               <li><a href="/new/index">Add Deal or Burger</a></li>
             </ul></li>
-          <li><h3>Delete...</h3>
-            <ul>
-              <li><a href='/joint/delete'>Eateries</a></li>
-              <li><a href="/days/2">Deals</a></li>
-              <li><a href="/days/3">Burgers</a></li>
-            </ul>
-          </li>
-        </ul>
-        <img class="burger" src="/images/burger_only.png" alt="burger sketch"/>
-      </nav>
+            <li><h3>Delete...</h3>
+              <ul>
+                <li><a href='/joint/delete'>Eateries</a></li>
+                <li><a href="/days/2">Deals</a></li>
+                <li><a href="/days/3">Burgers</a></li>
+              </ul>
+            </li>
+          </ul>
+          <img class="burger" src="/images/burger_only.png" alt="burger sketch"/>
+        </nav>
+      </div>
+      
+      <div>
 
-    </div>
-    <div>
-
-      <%= yield %>
+        <%= yield %>
         
-    </div>
-    
-    
+      </div>
 
     </div>
   </body>
