@@ -1,3 +1,8 @@
+get '/burgers' do
+  @burgers = Burger.all
+  erb(:burgers)
+end
+
 get '/burger/new' do
   id = TempIdStore.retrieve
   @eatery = Eatery.get_by_id(id)

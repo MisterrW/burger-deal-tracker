@@ -54,12 +54,17 @@ h3 {
 
 div.header {
   display: flex;
+  height: 160px;
   color: #FFC125;
-  background-color: #0e1717;
+  /*background-color: #0e1717;*/
+  background-color: white;
   -webkit-text-stroke: 0.5px black;
   font-family: 'norwester';
   /*width: 100%;*/
   justify-content: space-between;
+  background: url(/images/restaurant.png) no-repeat;
+  box-shadow: 10px 20px 30px 10px #000000 inset;
+  border-bottom: 2px;
 }
 
 div.header h1 {
@@ -68,6 +73,11 @@ div.header h1 {
 div.header a {
   color: #FFC125;
   -webkit-text-stroke: 0.5px black;
+}
+
+div.header a:hover {
+  color: black;
+  -webkit-text-stroke: 0.5px #FFC125;
 }
 
 div.header_text {
