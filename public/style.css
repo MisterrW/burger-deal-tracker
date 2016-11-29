@@ -139,7 +139,11 @@ nav ul li ul {
   font-family: monospace;
 }
 
-nav li {
+nav ul li {
   list-style-type: none;
-  margin-bottom: 5px;
+  padding-bottom: 15px;
+}
+
+nav ul li ul li{
+ padding-bottom: 2px;
 }
