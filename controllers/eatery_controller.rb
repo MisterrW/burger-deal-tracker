@@ -30,3 +30,8 @@ post '/joint/deleted' do
   Eatery.delete_by_id!(@id)
   redirect to '/deals'
 end
+
+get '/joints' do
+  @eateries = Eatery.all
+  erb(:joints)
+end
