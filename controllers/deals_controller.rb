@@ -94,6 +94,15 @@ end
 get '/deal/update/:id' do
   id = params[:id]
   @deal = Deal.get_by_id(id)
+  
+  @current_burgers = []
+  all_combos = BurgersDeals.all_pretty
+  all_combos.each do |combo|
+    if combo["deal_id"] == @deal.id
+      @current_burgers << combo["burger_id"]
+    end
+  end
+
   @eatery = Eatery.get_by_id(@deal.eatery_id)
   @days = Day.all
   @burgers = []
@@ -104,26 +113,29 @@ get '/deal/update/:id' do
       @burgers << burger
     end
   end
+
   if @burgers.length == 0
     @noburgers = "No burgers found for this deal! You'd better add some later..."
   end
+  
   erb(:update_deal)
 end
 
 post '/deal/updated' do
   burger_ids = params['burger']
   for_deal = params
+  binding.pry
   for_deal.delete('burger')
   update_deal = Deal.new( for_deal )
-  binding.pry
   update_deal.update
 
   if burger_ids
     burger_ids.each do |burger_id|
+      binding.pry
       burger_deal = BurgersDeals.new({
-        'burger_id' => burger_id,
-        'deal_id' => update_deal.id,
-        'eatery_id' => update_deal.eatery_id
+        'burger_id' => burger_id.to_i,
+        'deal_id' => update_deal.id.to_i,
+        'eatery_id' => update_deal.eatery_id.to_i
         })
       burger_deal.save
     end

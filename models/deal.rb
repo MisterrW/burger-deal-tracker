@@ -24,7 +24,6 @@ class Deal
   end
 
   def update
-    binding.pry
     sql = "
     DELETE FROM burgers_deals
     WHERE deal_id = #{@id}
