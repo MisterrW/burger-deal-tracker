@@ -88,18 +88,47 @@ end
 get '/deal/update' do
   @deals = Deal.all
   @eateries = Eatery.all
-  erb(:update_deal)
+  erb(:update_deal_select)
 end
 
 get '/deal/update/:id' do
-  @deal = Deal.get_by_id(params[:id])
-  @eateries = Eatery.all
-  erb(:delete_deal)
+  id = params[:id]
+  @deal = Deal.get_by_id(id)
+  @eatery = Eatery.get_by_id(@deal.eatery_id)
+  @days = Day.all
+  @burgers = []
+  @noburgers = ""
+  all_burgers = Burger.all
+  all_burgers.each do |burger|
+    if burger.eatery_id == @eatery.id
+      @burgers << burger
+    end
+  end
+  if @burgers.length == 0
+    @noburgers = "No burgers found for this deal! You'd better add some later..."
+  end
+  erb(:update_deal)
 end
 
 post '/deal/updated' do
-  @deal = deal.new(params)
-  @deal.update
+  burger_ids = params['burger']
+  for_deal = params
+  for_deal.delete('burger')
+  update_deal = Deal.new( for_deal )
+  binding.pry
+  update_deal.update
+
+  if burger_ids
+    burger_ids.each do |burger_id|
+      burger_deal = BurgersDeals.new({
+        'burger_id' => burger_id,
+        'deal_id' => update_deal.id,
+        'eatery_id' => update_deal.eatery_id
+        })
+      burger_deal.save
+    end
+  end
+  redirect to '/deals'
 end
 
 

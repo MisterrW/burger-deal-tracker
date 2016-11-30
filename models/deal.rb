@@ -23,15 +23,22 @@ class Deal
     @id = result[0]['id'].to_i
   end
 
-  def update(id)
+  def update
+    binding.pry
+    sql = "
+    DELETE FROM burgers_deals
+    WHERE deal_id = #{@id}
+    ;"
+    
+    SqlRunner.run(sql)
+    
     sql = "
     UPDATE deals
-    (eatery_id, day_id, description, name)
-    VALUES
-    (#{@eatery_id}, #{@day_id}, '#{@description}', '#{@name}')
-    WHERE id = #{id}
-    RETURNING *
+    SET eatery_id = #{@eatery_id}, day_id = #{@day_id}, description = '#{@description}', name = '#{@name}'
+    WHERE id = #{@id}
     ;"
+    
+    SqlRunner.run(sql)
   end
 
   def self.all

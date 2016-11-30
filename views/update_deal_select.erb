@@ -1,0 +1,13 @@
+<div>
+  <h1>Update a deal</h1>
+  <% @deals.each do |deal| %>
+  <div class="deal">
+  <h2><a href=/deal/update/<%=deal.id%>><%= deal.name %></a></h2>
+    <% @eateries.each do |eatery| %>
+      <% if eatery.id == deal.eatery_id %>
+        <p>Eatery: <%=eatery.name%></p>
+      <% end %>
+    <% end %>
+    </div>
+  <% end %>
+</div>
