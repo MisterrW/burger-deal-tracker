@@ -27,6 +27,7 @@
       </label>
     </p>
 
+    <div class="deal"
     <h3>Select burgers in this deal (even if you're updating this deal, make sure you tick the right burgers! Otherwise, they will be removed from the deal...)</h3>
     <p>
     <% @burgers.each do |burger| %>
@@ -34,6 +35,7 @@
     <% end %>
     <%= @noburgers %>
     </p>
+    </div
     <input type="hidden" name="eatery_id" value="<%=@eatery.id%>" />
     <input type="hidden" name="id" value="<%=@deal.id%>" />
     <p>

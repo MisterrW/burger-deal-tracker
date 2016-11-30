@@ -26,14 +26,16 @@
         </select>
       </label>
     </p>
-
+    <div class="deal">
     <h3>Select burgers in this deal (optional)</h3>
+    
     <p>
     <% @burgers.each do |burger| %>
     <input type="checkbox" name="burger[]" value="<%=burger.id%>"><%=burger.name%><br>
     <% end %>
     <%= @noburgers %>
     </p>
+    </div>
     <input type="hidden" name="eatery_id" value="<%=@eatery.id%>"
     <p>
       <input type="submit" value="Add this deal" />
