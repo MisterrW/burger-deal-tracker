@@ -85,6 +85,23 @@ post '/deal/deleted' do
   redirect to '/deals'
 end
 
+get '/deal/update' do
+  @deals = Deal.all
+  @eateries = Eatery.all
+  erb(:update_deal)
+end
+
+get '/deal/update/:id' do
+  @deal = Deal.get_by_id(params[:id])
+  @eateries = Eatery.all
+  erb(:delete_deal)
+end
+
+post '/deal/updated' do
+  @deal = deal.new(params)
+  @deal.update
+end
+
 
 
 

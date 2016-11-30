@@ -40,7 +40,7 @@ post '/burger/confirm' do
     end
   end
 
-  redirect to '/deals'
+  redirect to '/burgers'
 end
 
 get '/burger/delete' do

@@ -23,6 +23,17 @@ class Deal
     @id = result[0]['id'].to_i
   end
 
+  def update(id)
+    sql = "
+    UPDATE deals
+    (eatery_id, day_id, description, name)
+    VALUES
+    (#{@eatery_id}, #{@day_id}, '#{@description}', '#{@name}')
+    WHERE id = #{id}
+    RETURNING *
+    ;"
+  end
+
   def self.all
     sql = "
     SELECT * FROM deals
