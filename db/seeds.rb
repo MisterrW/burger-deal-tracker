@@ -192,26 +192,26 @@ class Seeds
     for_hank2.save
 
     for_vangel1 = BurgersDeals.new({
-          'eatery_id' => Eatery.get_by_name("Vangelgreases Venison Stop")['id'].to_i,
-          'burger_id' => Burger.get_by_name('Doe ray me')['id'].to_i,
-          'deal_id' => Deal.get_by_name('Synth Saturdays')['id'].to_i
-          })
+      'eatery_id' => Eatery.get_by_name("Vangelgreases Venison Stop")['id'].to_i,
+      'burger_id' => Burger.get_by_name('Doe ray me')['id'].to_i,
+      'deal_id' => Deal.get_by_name('Synth Saturdays')['id'].to_i
+      })
 
     for_vangel1.save
 
     for_grillswitch1 = BurgersDeals.new({
-          'eatery_id' => Eatery.get_by_name("Grillswitch Engage")['id'].to_i,
-          'burger_id' => Burger.get_by_name('As Daylight Fries')['id'].to_i,
-          'deal_id' => Deal.get_by_name('Metalcore Mondays')['id'].to_i
-          })
+      'eatery_id' => Eatery.get_by_name("Grillswitch Engage")['id'].to_i,
+      'burger_id' => Burger.get_by_name('As Daylight Fries')['id'].to_i,
+      'deal_id' => Deal.get_by_name('Metalcore Mondays')['id'].to_i
+      })
 
     for_grillswitch1.save
 
     for_roy1 = BurgersDeals.new({
-          'eatery_id' => Eatery.get_by_name("Roy Battys Replicantessen")['id'].to_i,
-          'burger_id' => Burger.get_by_name('Questionable things, in a bap')['id'].to_i,
-          'deal_id' => Deal.get_by_name('...but not to last')['id'].to_i
-          })
+      'eatery_id' => Eatery.get_by_name("Roy Battys Replicantessen")['id'].to_i,
+      'burger_id' => Burger.get_by_name('Questionable things, in a bap')['id'].to_i,
+      'deal_id' => Deal.get_by_name('...but not to last')['id'].to_i
+      })
 
     for_roy1.save
   end
