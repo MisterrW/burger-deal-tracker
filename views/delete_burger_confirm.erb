@@ -1,0 +1,11 @@
+<div>
+  <h2>You are about to delete <%= @burger.name %>.</h2>
+
+  <p>Click 'delete' if you're sure.</p>
+
+  <form action="/burger/deleted" method ="post">
+  <input type="hidden" name="id" value="<%= @burger.id %>"/>
+  <input type="submit" value="Delete"/>
+  </form>
+
+</div>

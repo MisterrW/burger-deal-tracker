@@ -43,10 +43,20 @@ post '/burger/confirm' do
   redirect to '/deals'
 end
 
+get '/burger/delete' do
+  @burgers = Burger.all
+  @eateries = Eatery.all
+  erb(:delete_burger)
+end
 
+get '/burger/delete/confirm/:id' do
+  @id = params[:id]
+  @burger = Burger.get_by_id(@id)
+  erb(:delete_burger_confirm)
+end
 
-
-
-
-
-
+post '/burger/deleted' do
+  @id = params[:id]
+  Burger.delete_by_id!(@id)
+  redirect to '/burgers'
+end

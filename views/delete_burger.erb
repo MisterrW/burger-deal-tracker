@@ -1,0 +1,13 @@
+<div>
+  <h1>Delete a burger</h1>
+  <% @burgers.each do |burger| %>
+  <div class="deal">
+  <h2><a href=/burger/delete/confirm/<%=burger.id%>><%= burger.name %></a></h2>
+    <% @eateries.each do |eatery| %>
+      <% if eatery.id == burger.eatery_id %>
+        <p>Eatery: <%=eatery.name%></p>
+      <% end %>
+    <% end %>
+    </div>
+  <% end %>
+</div>

@@ -60,6 +60,16 @@ class Burger
     return all_by_burger
   end
 
+  def self.get_by_id(id)
+    id = id.to_i
+    sql = "
+    SELECT * FROM burgers
+    WHERE id = #{id}
+    ;"
+    result = SqlRunner.run(sql)
+    return Burger.new(result[0])
+  end
+
   def self.get_by_name(name)
     sql = "
     SELECT * FROM burgers
@@ -73,6 +83,20 @@ class Burger
     sql = "
     DELETE FROM burgers
     WHERE name = '#{name}'
+    ;"
+    SqlRunner.run(sql)
+  end
+
+  def self.delete_by_id!(id)
+    id = id.to_i
+    sql = "
+    DELETE FROM burgers_deals
+    WHERE burger_id = #{id}
+    ;"
+    SqlRunner.run(sql)
+    sql = "
+    DELETE FROM burgers
+    WHERE id = #{id}
     ;"
     SqlRunner.run(sql)
   end
