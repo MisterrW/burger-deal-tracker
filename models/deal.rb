@@ -32,6 +32,16 @@ class Deal
     return deals
   end
 
+  def self.get_by_id(id)
+    id = id.to_i
+    sql = "
+    SELECT * FROM deals
+    WHERE id = #{id}
+    ;"
+    result = SqlRunner.run(sql)
+    return Deal.new(result[0])
+  end
+
   def self.get_by_name(name)
     sql = "
     SELECT * FROM deals
@@ -47,6 +57,20 @@ class Deal
     ;"
     result = SqlRunner.run(sql)
     return result
+  end
+
+  def self.delete_by_id!(id)
+    id = id.to_i
+    sql = "
+    DELETE FROM burgers_deals
+    WHERE deal_id = #{id}
+    ;"
+    SqlRunner.run(sql)
+    sql = "
+    DELETE FROM deals
+    WHERE id = #{id}
+    ;"
+    SqlRunner.run(sql)
   end
 
   def self.by_deal_type(deal_type)

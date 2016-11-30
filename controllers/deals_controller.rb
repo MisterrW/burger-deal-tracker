@@ -67,9 +67,23 @@ post '/deal/confirm' do
   redirect to '/deals'
 end
 
+get '/deal/delete' do
+  @deals = Deal.all
+  @eateries = Eatery.all
+  erb(:delete_deal)
+end
 
+get '/deal/delete/confirm/:id' do
+  @id = params[:id]
+  @deal = Deal.get_by_id(@id)
+  erb(:delete_deal_confirm)
+end
 
-
+post '/deal/deleted' do
+  @id = params[:id]
+  Deal.delete_by_id!(@id)
+  redirect to '/deals'
+end
 
 
 
