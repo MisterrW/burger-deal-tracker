@@ -31,6 +31,35 @@ class Burger
     return burgers
   end
 
+  def self.all_pretty
+    all_deals = []
+    sql = '
+    SELECT e.name AS "eatery", e.id AS "eatery_id", b.name AS "burger", b.price as "price", d.name AS "deal", d.description AS "details", y.name AS "day", y.id AS "day_id"
+    FROM burgers_deals bd
+    FULL JOIN burgers b
+    ON bd.burger_id = b.id
+    FULL JOIN deals d
+    ON bd.deal_id = d.id
+    FULL JOIN eateries e
+    ON b.eatery_id = e.id
+    LEFT JOIN days y
+    ON d.day_id = y.id
+    ;'
+    results = SqlRunner.run(sql)
+    results.each do |result|
+      result['day_id'] = result['day_id'].to_i
+      result['eatery_id'] = result['eatery_id'].to_i
+      all_deals << result
+    end
+    return all_deals
+  end
+
+  def self.all_by_burger
+    all_combos = self.all_pretty
+    all_by_burger = all_combos.group_by {|combo| combo['burger']}
+    return all_by_burger
+  end
+
   def self.get_by_name(name)
     sql = "
     SELECT * FROM burgers

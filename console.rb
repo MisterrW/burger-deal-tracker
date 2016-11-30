@@ -24,4 +24,5 @@ require_relative('db/seeds')
 # Seeds.days
 # Seeds.setup
 binding.pry
+# BurgersDeals.all_by_eatery_and_deal
 nil

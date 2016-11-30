@@ -43,29 +43,43 @@ class BurgersDeals
     return all_deals
   end
 
-  def self.all_by_eatery_and_deal
+  def self.all_by_burger
     all_combos = self.all_pretty
-    all_by_eatery = all_combos.group_by { |x| x['eatery']}
+    all_by_burger = all_combos.group_by {|combo| combo['burger']}
+    return all_by_burger
+  end
+
+  def self.all_by_eatery
+    all_combos = self.all_pretty
+    all_combos_by_eatery = all_combos.group_by {|combo| combo['eatery']}
+    return all_combos_by_eatery
+  end
+
+  def self.all_by_eatery_and_deal
+    all_combos_by_eatery = self.all_by_eatery
     all_by_deal = {}
-    all_by_eatery.each do |key,value|
-      temp_thing = {key => value.group_by {|x| x['deal']}}
+    all_combos_by_eatery.each do |key,value|
+      temp_thing = {key => value.group_by {|x| 
+        x['deal']}}
       all_by_deal.merge!(temp_thing)
     end
     return all_by_deal
   end
 
-  def self.all_by_day_and_eatery
+  def self.all_by_day
     all_combos = self.all_pretty
-    all_by_day = all_combos.group_by { |x| x['day_id']}
-    all_by_eatery = {}
-    all_by_day.each do |key,value|
-      # value.each do |item|
-      #   item.delete('day')
-      # end
-      temp_thing = {key => value.group_by {|x| x['eatery']}}
-      all_by_eatery.merge!(temp_thing)
+    all_combos_by_day = all_combos.group_by { |combo| combo['day_id']}
+    return all_combos_by_day
+  end
+  
+  def self.all_by_day_and_eatery
+    all_combos_by_day = self.all_by_day
+    all_combos_by_day_and_eatery = {}
+    all_combos_by_day.each do |key,value|
+      temp_hash = {key => value.group_by {|x| x['eatery']}}
+      all_combos_by_day_and_eatery.merge!(temp_hash)
     end
-    return all_by_eatery
+    return all_combos_by_day_and_eatery
   end
 
   def self.all_by_deal
@@ -73,16 +87,12 @@ class BurgersDeals
     all_by_eatery = self.all_by_day_and_eatery
     all_by_eatery.each do |key, value|
       value.each do |key2, value2|
-      #   value2.each do |item|
-      #     item.delete('eatery')
-      #     item.delete('eatery_id')
-      #   end
-        temp_thing = {
+        temp_hash = {
           key => {
             key2 => value2.group_by {|x| x['deal']}
             } 
           }
-        all_by_deal.merge!(temp_thing)
+        all_by_deal.merge!(temp_hash)
       end
     end
     return all_by_deal

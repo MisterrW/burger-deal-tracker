@@ -1,5 +1,5 @@
 get '/burgers' do
-  @burgers = Burger.all
+  @burgers = Burger.all_by_burger
   erb(:burgers)
 end
 
