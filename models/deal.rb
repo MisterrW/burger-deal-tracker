@@ -49,28 +49,6 @@ class Deal
     return result
   end
 
-  # def self.by_day(day_id)
-  #   deals = []
-  #   all_deals = self.all_pretty()
-  #   all_deals.each do |deal|
-  #     if deal['day_id'] == day_id
-  #       deals << deal
-  #     end
-  #   end
-  #   return deals
-  # end
-
-  # def self.by_eatery(eatery_id)
-  #   deals = []
-  #   all_deals = self.all_pretty()
-  #   all_deals.each do |deal|
-  #     if deal['eatery_id'] == eatery_id
-  #       deals << deal
-  #     end
-  #   end
-  #   return deals
-  # end
-
   def self.by_deal_type(deal_type)
   end
 

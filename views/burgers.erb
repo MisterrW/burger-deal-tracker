@@ -1,41 +1,39 @@
-
-
 <div>
   <div class="page_title">
-  <h1>All the burgers</h1>
+    <h1>All the burgers</h1>
   </div>
   <% @burgers.each do |key, value| %>
   <div margin-top=10px;>
     <div class="deal">
-    <h2><%= "#{key}"%></h2>    
-    <p>Eatery: <%= value[0]['eatery'] %></p>
-    <p>Price: £<%= value[0]['price'] %></p>
+      <h2><%= "#{key}"%></h2>    
+      <p>Eatery: <%= value[0]['eatery'] %></p>
+      <p>Price: £<%= value[0]['price'] %></p>
 
-    <% deals=[] %>
+      <% deals=[] %>
 
-    <% value.each do |item| %>
-    <% if item['deal'] != nil %>
+      <% value.each do |item| %>
+      <% if item['deal'] != nil %>
       <% deals << item['deal'] %>
-    <% end %>
-    <%end %>
-    
-    <% if deals.length > 1 %>
+      <% end %>
+      <% end %>
+
+      <% if deals.length > 1 %>
       <p>In deals:</p>
       <ul>
-      <% deals.each do |deal| %>
+        <% deals.each do |deal| %>
         <li><%= deal %></li>
+        <% end %>
+      <% elsif deals.length == 1 %>
+        <p>In deal:</p>
+        <ul>
+          <% deals.each do |deal| %>
+          <li><%= deal %></li>
+          <% end %>
+        </ul>
       <% end %>
-    <% elsif deals.length == 1 %>
-      <p>In deal:</p>
-      <ul>
-      <% deals.each do |deal| %>
-        <li><%= deal %></li>
-      <%end %>
-      </ul>
+
+      </div>
+
+    </div>
     <% end %>
-    
   </div>
-    
-  </div>
-  <% end %>
-</div>
