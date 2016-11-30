@@ -7,40 +7,44 @@
 
     <p>
       <label>
-      Deal name: <input type="text" name="name" value="<%= @deal.name %>"/>
+        Deal name: <input type="text" name="name" value="<%= @deal.name %>"/>
       </label>
     </p>
 
     <p>
       <label>
-      Description of deal: <input type="text" name="description" value="<%= @deal.description %>"/>
+        Description of deal: <input type="text" name="description" value="<%= @deal.description %>"/>
       </label>
     </p>
     
     <p>
       <label>
-        Day: <select name="day_id">
-          <% @days.each do |day| %>
-          <option value="<%=day.id%>"><%=day.name%></option>
-          <%end%>
-        </select>
-      </label>
-    </p>
+        Day: <select name="day_id"> 
+        <% @days.each do |day| %>
+        <% @selected = '' %>
+        <% if day.id == @deal.day_id %> 
+        <%  @selected = 'selected' %>
+        <% end %>
+        <option <%= @selected %> value="<%=day.id%>"> <%=day.name%></option>
+        <%end%>
+      </select>
+    </label>
+  </p>
 
-    <div class="deal"
-    <h3>Select burgers in this deal (even if you're updating this deal, make sure you tick the right burgers! Otherwise, they will be removed from the deal...)</h3>
-    <p>
+  <div class="deal_wide"
+  <h3>Select burgers in this deal (even if you're updating this deal, make sure you tick the right burgers! Otherwise, they will be removed from the deal...)</h3>
+  <p>
     <% @burgers.each do |burger| %>
     <input type="checkbox" name="burger[]" value="<%=burger.id%>"><%=burger.name%><br>
     <% end %>
     <%= @noburgers %>
-    </p>
-    </div
-    <input type="hidden" name="eatery_id" value="<%=@eatery.id%>" />
-    <input type="hidden" name="id" value="<%=@deal.id%>" />
-    <p>
-      <input type="submit" value="Update this deal" />
-    </p>
-  </form>
+  </p>
+  </div
+  <input type="hidden" name="eatery_id" value="<%=@eatery.id%>" />
+  <input type="hidden" name="id" value="<%=@deal.id%>" />
+  <p>
+    <input type="submit" value="Update this deal" />
+  </p>
+</form>
 
 </div>

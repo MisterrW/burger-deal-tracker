@@ -99,7 +99,7 @@ div.main {
   padding-top: 40px;
   padding-right: 40px;
   padding-left: 30px;
-    background: url(/images/burger_meal.png) 85% 95% no-repeat;
+    background: url(/images/burger_meal.png) 95% 95% no-repeat;
   background-size: 41%;
   background-attachment: fixed;
 }
@@ -120,6 +120,15 @@ div.deal {
   margin: 10px;
   padding: 10px;
   width: 300px;
+  border: 0.1px solid #414141;
+}
+
+div.deal_wide {
+  background-color: #F8F5E1;
+  opacity: 0.9;
+  margin: 10px;
+  padding: 10px;
+  width: 500px;
   border: 0.1px solid #414141;
 }
 

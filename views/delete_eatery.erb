@@ -1,6 +1,8 @@
 <div>
   <h1>Delete an eatery</h1>
+  <div class="deal_wide">
   <% @eateries.each do |eatery| %>
   <h2><a href=/joint/delete/confirm/<%=eatery.id%>><%=eatery.name%></a></h2>
   <% end %>
+  </div>
 </div>
