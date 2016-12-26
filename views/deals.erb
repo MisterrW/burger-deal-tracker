@@ -13,8 +13,8 @@
         <p>Deal type: <%= "#{value2[0]['details']}" %></p>
         <p>Burgers included:</p>
         <ul>
-          <% value2.each do |x| %>
-          <li><%= "#{x['burger']}"%></li>
+          <% value2.each do |combo| %>
+          <li><%= "#{combo['burger']}"%></li>
           <% end %>
         </ul>
       </div>

@@ -61,8 +61,8 @@ class BurgersDeals
     all_combos_by_eatery = self.all_by_eatery
     all_by_deal = {}
     all_combos_by_eatery.each do |key,value|
-      temp_thing = {key => value.group_by {|x| 
-        x['deal']}}
+      temp_thing = {key => value.group_by {|combo| 
+        combo['deal']}}
       all_by_deal.merge!(temp_thing)
     end
     return all_by_deal
@@ -78,7 +78,7 @@ class BurgersDeals
     all_combos_by_day = self.all_by_day
     all_combos_by_day_and_eatery = {}
     all_combos_by_day.each do |key,value|
-      temp_hash = {key => value.group_by {|x| x['eatery']}}
+      temp_hash = {key => value.group_by {|x| x['eatery'] }}
       all_combos_by_day_and_eatery.merge!(temp_hash)
     end
     return all_combos_by_day_and_eatery

@@ -124,14 +124,12 @@ end
 post '/deal/updated' do
   burger_ids = params['burger']
   for_deal = params
-  binding.pry
   for_deal.delete('burger')
   update_deal = Deal.new( for_deal )
   update_deal.update
 
   if burger_ids
     burger_ids.each do |burger_id|
-      binding.pry
       burger_deal = BurgersDeals.new({
         'burger_id' => burger_id.to_i,
         'deal_id' => update_deal.id.to_i,
@@ -142,7 +140,3 @@ post '/deal/updated' do
   end
   redirect to '/deals'
 end
-
-
-
-
